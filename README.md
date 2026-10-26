@@ -1,4 +1,4 @@
-# Portofolio Andi Pratama
+# Portofolio Zahra Nailul Aisyah
 Website portofolio pribadi yang saya buat di Kelas Industri UBIG 
 (Paket 1, Minggu 01 sampai 05).
 Website ini tampil rapi di ponsel, tablet, dan laptop.
@@ -16,4 +16,4 @@ jadwal belajar
 - Git dan GitHub
 ## Tautan- Halaman
 - Website: menyusul setelah *deploy* ke Vercel
-- Dibuat oleh: Andi Pratama, SMK Mitra
+- Dibuat oleh: Zahra Naailul Aisyah, SMKS BRANTAS KARANGKATES
