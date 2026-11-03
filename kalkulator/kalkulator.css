@@ -1,0 +1,114 @@
+/* Pengaturan dasar */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family:Arial, sans-serif;
+    background-color: #f5f0e8;
+    margin: 0;
+    padding: 20px;
+    color: #333;
+}
+
+/* kotak utama */
+.container {
+    width:100%;
+    max-width: 420px;
+    margin: 50px auto;
+    padding: 30px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(80, 60, 0, 40, 0.10);
+}
+
+/* Bagian judul */
+.header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.header h2 {
+    color: #604936;
+    margin-bottom: 8px;
+    font-size: 24px;
+}
+
+.header p {
+    color: #888078;
+    font-size: 14px;
+}
+
+/* Label input */
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #604936;
+}
+
+/* Kotak input */
+input {
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 20px;
+    border: 1px solid #ded4c8;
+    border-radius: 7px;
+    font-size: 14px;
+    outline: none;
+}
+
+input:focus {
+    border-color: #9b785b;
+}
+
+/* Tombol */
+button {
+    width: 100%;
+    padding: 13px;
+    background-color: #806044;
+    color: #ffffff;
+    border: none;
+    border-radius: 7px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #604936;
+}
+
+/* Hasil perhitungan */
+.hasil {
+    margin-top: 25px;
+    padding: 18px;
+    background-color: #f5f0e8;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.hasil h3 {
+    color: #604936;
+    margin-top: 0px;
+    font-size: 18px;
+}
+
+#hasil {
+    color: #604936;
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+/* Tampilan HP */
+@media screen and (max-width: 480px) {
+    .body {
+        padding: 15px;
+    }
+
+    .container {
+        margin: 25px auto;
+        padding: 22px;
+    }
+}
