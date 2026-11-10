@@ -1,4 +1,3 @@
-
 // Fungsi menghitung rata-rata
 function hitungRataRata(tugas, uts, uas) {
     return (tugas + uts + uas) / 3;

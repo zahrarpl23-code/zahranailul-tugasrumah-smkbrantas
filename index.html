@@ -8,8 +8,9 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
-  <script src="js/latihan.js" defer></script>
+  <script src="js/main.js" defer></script>
   <script src="js/logika.js" defer></script>
+  <script src="js/latihan.js" defer></script>
 </head>
 <body>
   <header>
@@ -20,7 +21,7 @@
           <li><a href="index.html">Beranda</a></li>
           <li><a href="proyek.html">Proyek</a></li>
           <li><a href="kontak.html">Kontak</a></li>
-          <li><a href="kalkulator/kalkulator.html">Kalkulator</a></li>
+          <li><a href="kalkulator.html">Kalkulator</a></li>
         </ul>
       </nav>
       <!-- Tantangan: menu ponsel yang bisa dibuka-tutup -->
@@ -31,10 +32,11 @@
             <li><a href="index.html">Beranda</a></li>
             <li><a href="proyek.html">Proyek</a></li>
             <li><a href="kontak.html">Kontak</a></li>
-            <li><a href="kalkulator/kalkulator.html">Kalkulator</a></li>
+            <li><a href="kalkulator.html">Kalkulator</a></li>
           </ul>
         </nav>
       </details>
+      <button type="button" class="tombol-tema" id="btn-tema">🌙 Mode Gelap</button>
     </div>
   </header>
 
@@ -43,14 +45,14 @@
       <section class="hero">
         <img src="img/foto-profile.jpeg" alt="Foto profil Zahra Nailul Aisyah" width="180">
         <div>
-          <h2>Halo, saya Zahra!</h2>
-          <p>Siswa kelas X PPLG 1 SMKS BRANTAS KARANGKATES, calon Junior Web Developer di Kelas Industri UBIG.</p>
+          <h2>Halo, saya Zahra Nailul Aisyah!</h2>
+          <p>Siswa kelas X SMK, calon Junior Web Developer di Kelas Industri UBIG.</p>
           <a href="proyek.html" class="tombol">Lihat Proyek Saya</a>
         </div>
       </section>
 
       <section class="kartu">
-        <h2>Tentang Saya</h2>
+      <h2>Tentang Saya</h2>
         <p>Saya tinggal di Blitar dan senang mencoba hal baru di dunia teknologi. Saya ingin bisa membuat website yang bermanfaat untuk sekolah dan UMKM di sekitar rumah.</p>
       </section>
 
@@ -76,11 +78,8 @@
 
         <section class="kartu">
           <h2>Keahlian</h2>
-          <ul>
-            <li>HTML dasar (sedang dipelajari)</li>
-            <li>Mengetik cepat ( sedang diusahakan )</li>
-            <li>Desain poster dengan Canva</li>
-          </ul>
+          <ul id="daftar-skill"></ul>
+          <p id="jumlah-skill"></p>
         </section>
       </div>
 
@@ -119,8 +118,8 @@
 
   <footer>
     <p>Kontak: <a href="mailto:zahra.rpl23@gmail.com">zahra.rpl23@gmail.com</a> |
-      <a href="https://github.com/" target="_blank">GitHub</a> |
-      <a href="https://www.youtube.com/" target="_blank">YouTube</a></p>
+      <a href="https://github.com/Syomaybandung" target="_blank">GitHub</a> |
+      <a href="https://www.youtube.com/@AnandityaZahra_xrpl" target="_blank">YouTube</a></p>
     <p>&copy; 2026 Zahra Nailul Aisyah. Dibuat di Kelas Industri UBIG.</p>
   </footer>
 </body>
