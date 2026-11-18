@@ -1,140 +1,168 @@
-// JavaScript untuk portofolio Ananditya Zahra.
-const skills = [
-	{ nama: "HTML", level: "Menengah" },
-	{ nama: "CSS", level: "Menengah" },
-	{ nama: "Git dan GitHub", level: "Dasar" },
-	{ nama: "Desain poster dengan Canva", level: "Mahir" },
-	{ nama: "JavaScript", level: "Dasar" },
-];
+// JavaScript untuk fitur Beranda, Proyek, dan Kontak.
+// File dimuat dengan defer pada halaman yang menggunakan fitur-fitur ini.
 
-console.log(`Jumlah keahlian: ${skills.length}`);
-console.log(`Keahlian pertama: ${skills[0].nama}`);
-console.table(skills);
 
-const sedangDipelajari = skills.filter((skill) => skill.level === "Dasar");
-console.log(sedangDipelajari.map((skill) => skill.nama));
-
+// 1. Daftar keahlian (halaman Beranda), data dari
+// data/keahlian.json
 const daftarSkill = document.querySelector("#daftar-skill");
 const jumlahSkill = document.querySelector("#jumlah-skill");
 
-if (daftarSkill && jumlahSkill) {
-	skills.forEach((skill) => {
-		const item = document.createElement("li");
-		item.textContent = `${skill.nama} (${skill.level})`;
-		daftarSkill.appendChild(item);
-	});
+async function muatKeahlian() {
+  try {
+    const response = await fetch("data/keahlian.json");
+    if (!response.ok) {
+      throw new Error(`Status ${response.status}`);
+    }
+    const skills = await response.json();
 
-	jumlahSkill.textContent = `Ada ${skills.length} keahlian yang sedang saya kembangkan.`;
+    skills.forEach((skill) => {
+      const item = document.createElement("li");
+      item.textContent = `${skill.nama} (${skill.level})`;
+      daftarSkill.appendChild(item);
+    });
+    jumlahSkill.textContent = `Ada ${skills.length} keahlian yang sedang saya kembangkan.`;
+  } catch (error) {
+    jumlahSkill.textContent = "Daftar keahlian gagal dimuat.";
+    console.error(error);
+  }
 }
 
-// Daftar proyek dan filter (halaman Proyek)
-const proyek = [
-	{
-		judul: "Halaman Profil Pertama",
-		kategori: "HTML",
-		gambar: "img/proyek-profile (2).png",
-		alt: "Tangkapan layar halaman profil Zahra Nailul Aisyah",
-		deskripsi: "Halaman web pertama saya, berisi profil, hobi, cita-cita, keahlian, dan kontak.",
-	},
-	{
-		judul: "Form Kontak",
-		kategori: "HTML",
-		gambar: "img/proyek-kontak.png",
-		alt: "Tangkapan layar form kontak",
-		deskripsi: "Form kontak dengan label dan validasi bawaan browser.",
-	},
-	{
-		judul: "Tabel Jadwal Belajar",
-		kategori: "HTML",
-		gambar: "img/jadwal-xpp.png",
-		alt: "Tangkapan layar tabel jadwal belajar mandiri",
-		deskripsi: "Jadwal belajar mingguan yang disusun menggunakan tabel HTML.",
-	},
-	{
-		judul: "Kode JavaScript",
-		kategori: "JavaScript",
-		gambar: "img/kode-js.png",
-		alt: "Tangkapan layar kode JavaScript",
-		deskripsi: "Contoh kode JavaScript yang digunakan dalam latihan.",
-	},
-	{
-		judul: "Hasil Console JavaScript",
-		kategori: "JavaScript",
-		gambar: "img/console.png",
-		alt: "Tangkapan layar hasil JavaScript di console",
-		deskripsi: "Hasil dari latihan JavaScript yang ditampilkan di console.",
-	},
-	{
-		judul: "Portofolio Responsif",
-		kategori: "CSS",
-		gambar: "img/portofolio-responsif.png",
-		alt: "Tangkapan layar halaman profil",
-		deskripsi: "Halaman profil yang menampilkan informasi pribadi dan kontak.",
-	}
-];
+if (daftarSkill) {
+  muatKeahlian();
+}
+
+
+// Kontak: perbarui penghitung karakter pesan.
+const kotakPesan = document.querySelector("#pesan");
+const hitungKarakter = document.querySelector("#hitung-karakter");
+
+if (kotakPesan && hitungKarakter) {
+  const perbaruiHitungKarakter = () => {
+    hitungKarakter.textContent = `${kotakPesan.value.length}/300 karakter`;
+  };
+
+  kotakPesan.addEventListener("input", perbaruiHitungKarakter);
+  perbaruiHitungKarakter();
+  hitungKarakter.classList.toggle("hampir-penuh", kotakPesan.value.length >= 250);
+ if (tombolKosongkan) {
+  tombolKosongkan.addEventListener("click", () => {
+    kotakPesan.value = "kosongkan-kotak-pesan";
+    perbaruiHitungKarakter();
+  });
+ }
+}
+
+// Proyek: data dan fungsi untuk menampilkan serta memfilter kartu proyek.
+let proyek = [];
 
 const daftarProyek = document.querySelector("#daftar-proyek");
 const jumlahProyek = document.querySelector("#jumlah-proyek");
 const tombolFilter = document.querySelectorAll("[data-filter-proyek]");
+let kategoriAktif = "semua";
 
-if (daftarProyek && jumlahProyek) {
-	function tampilkanProyek(daftar) {
-		daftarProyek.replaceChildren();
+function buatKartuProyek(item) {
+  const gambar = item.gambar
+    ? `<img src="${item.gambar}" alt="${item.alt}" width="280">`
+    : "";
 
-		daftar.forEach((item) => {
-			const kartu = document.createElement("article");
-			kartu.className = "kartu";
-
-			const label = document.createElement("span");
-			label.className = "label";
-			label.textContent = item.kategori;
-
-			const judul = document.createElement("h3");
-			judul.textContent = item.judul;
-
-			const gambar = document.createElement("img");
-			gambar.src = item.gambar;
-			gambar.alt = item.alt;
-			gambar.width = 280;
-
-			const deskripsi = document.createElement("p");
-			deskripsi.textContent = item.deskripsi;
-
-			kartu.append(label, judul, gambar, deskripsi);
-			daftarProyek.append(kartu);
-		});
-
-		jumlahProyek.textContent = `Menampilkan ${daftar.length} dari ${proyek.length} proyek`;
-	}
-
-	tombolFilter.forEach((tombol) => {
-		tombol.addEventListener("click", () => {
-			const kategori = tombol.dataset.filterProyek;
-			const hasilFilter = kategori === "semua"
-				? proyek
-				: proyek.filter((item) => item.kategori === kategori);
-
-			tombolFilter.forEach((item) => {
-				const aktif = item === tombol;
-				item.classList.toggle("aktif", aktif);
-				item.setAttribute("aria-pressed", String(aktif));
-			});
-
-			tampilkanProyek(hasilFilter);
-		});
-	});
-
-	tampilkanProyek(proyek);
+  return `
+    <article class="kartu">
+      <span class="label">${item.kategori}</span>
+      <h3>${item.judul}</h3>
+      ${gambar}
+      <p>${item.deskripsi}</p>
+    </article>
+  `;
 }
 
-// 3. Penghitung karakter pesan (halaman kontak)
-const kontakPesan = document.querySelector("#pesan");
-const kontakHitung = document.querySelector("#hitung-karakter");
+function tampilkanProyek(daftar) {
+  if (!daftarProyek || !jumlahProyek) {
+    return;
+  }
 
-if (kontakPesan && kontakHitung) {
-	kontakHitung.textContent = `${kontakPesan.value.length}/300 karakter`;
+  daftarProyek.innerHTML = daftar.map(buatKartuProyek).join("");
+  jumlahProyek.textContent = `Menampilkan ${daftar.length} dari ${proyek.length} proyek.`;
+}
 
-	kontakPesan.addEventListener("input", () => {
-		kontakHitung.textContent = `${kontakPesan.value.length}/300 karakter`;
-	});
+async function muatProyek() {
+    try {
+        daftarProyek.innerHTML = "Memuat proyek...";
+
+        const response = await fetch("data/proyek.json");
+
+        if (!response.ok) {
+            throw new Error("Gagal mengambil data proyek");
+        }
+
+        proyek = await response.json();
+
+        terapkanFilter();
+    } catch (error) {
+        daftarProyek.innerHTML = "Data proyek gagal dimuat.";
+        console.error(error);
+    }
+}
+
+function terapkanFilter() {
+  const hasilFilter = kategoriAktif === "semua"
+    ? proyek
+    : proyek.filter((item) => item.kategori === kategoriAktif);
+
+  tampilkanProyek(hasilFilter);
+}
+
+if (daftarProyek && jumlahProyek) {
+  muatProyek();
+  tombolFilter.forEach((tombol) => {
+    tombol.addEventListener("click", () => {
+      kategoriAktif = tombol.dataset.filterProyek;
+      tombolFilter.forEach((item) => {
+        const aktif = item === tombol;
+        item.classList.toggle("aktif", aktif);
+        item.setAttribute("aria-pressed", String(aktif));
+      });
+      terapkanFilter();
+    });
+  });
+}
+
+
+
+// 5. Repositori GitHub terbaru (halaman Proyek)
+const username = "zahrarpl23-code";
+const alamatRepo = `https://api.github.com/users/${username}/repos`;
+const pilihan = "?sort=updated&per_page=6";
+
+const daftarRepo = document.querySelector("#daftar-repo");
+const statusRepo = document.querySelector("#status-repo");
+
+async function ambilRepo() {
+  statusRepo.textContent = "Memuat...";
+
+  try {
+    const response = await fetch(alamatRepo + pilihan);
+    if (!response.ok) {
+      throw new Error(`Status ${response.status}`);
+    }
+    const repos = await response.json();
+
+    repos.forEach((repo) => {
+      const item = document.createElement("li");
+      const tautan = document.createElement("a");
+      tautan.href = repo.html_url;
+      tautan.target = "_blank";
+      tautan.textContent = repo.name;
+      item.appendChild(tautan);
+      daftarRepo.appendChild(item);
+    });
+
+    statusRepo.textContent = `${repos.length} repositori yang terakhir diperbarui:`;
+  } catch (error) {
+    statusRepo.textContent = "Maaf, daftar repositori gagal dimuat. Periksa username atau coba lagi nanti.";
+    console.error(error);
+  }
+}
+
+if (daftarRepo) {
+  ambilRepo();
 }

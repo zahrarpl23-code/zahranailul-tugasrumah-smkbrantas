@@ -1,16 +1,19 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Zahra Nailul Aisyah | Proyek</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&family=Poppins:wght@600;700&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
   <script src="js/main.js" defer></script>
   <script src="js/tema.js" defer></script>
 </head>
+
 <body>
   <header>
     <div class="container navbar">
@@ -46,21 +49,33 @@
         <p>Kumpulan hasil belajar saya di Kelas Industri UBIG.</p>
 
         <div class="filter-proyek" role="group" aria-label="Filter proyek berdasarkan kategori">
-          <button type="button" class="filter-proyek-tombol aktif" data-filter-proyek="semua" aria-pressed="true">Semua</button>
-          <button type="button" class="filter-proyek-tombol" data-filter-proyek="HTML" aria-pressed="false">HTML</button>
+          <button type="button" class="filter-proyek-tombol aktif" data-filter-proyek="semua"
+            aria-pressed="true">Semua</button>
+          <button type="button" class="filter-proyek-tombol" data-filter-proyek="HTML"
+            aria-pressed="false">HTML</button>
           <button type="button" class="filter-proyek-tombol" data-filter-proyek="CSS" aria-pressed="false">CSS</button>
-          <button type="button" class="filter-proyek-tombol" data-filter-proyek="JavaScript" aria-pressed="false">JavaScript</button>
+          <button type="button" class="filter-proyek-tombol" data-filter-proyek="JavaScript"
+            aria-pressed="false">JavaScript</button>
         </div>
         <p id="jumlah-proyek" aria-live="polite"></p>
         <div class="daftar-kartu" id="daftar-proyek"></div>
       </section>
-
-      <!-- FAQ dengan details dan summary -->
+      
+      <section class="kartu">
+        <h2>Repositori GitHub Saya</h2>
+          <p>Daftar ini diambil langsung dari GitHub setiap kali halaman
+  dibuka.</p>
+          <p id="status-repo"></p>
+        <ul id="daftar-repo"></ul>
+      </section>
+      
+       <!-- FAQ dengan details dan summary -->
       <section class="kartu">
         <h2>Pertanyaan yang Sering Diajukan</h2>
         <details>
           <summary>Bahasa apa yang dipakai untuk membuat proyek ini?</summary>
-          <p>Semua proyek di halaman ini dibuat dengan HTML. Tampilannya akan saya rapikan dengan CSS mulai Minggu 03.</p>
+          <p>Semua proyek di halaman ini dibuat dengan HTML. Tampilannya akan saya rapikan dengan CSS mulai Minggu 03.
+          </p>
         </details>
         <details>
           <summary>Apakah saya menerima pesanan pembuatan website?</summary>
@@ -74,12 +89,14 @@
 
 
 
-  
- <footer>
+
+  <footer>
     <p>Kontak: <a href="mailto:zahra.rpl23@gmail.com" target="_blank">zahra.rpl23@gmail.com</a> |
       <a href="https://github.com/Syomaybandung" target="_blank">GitHub</a> |
-      <a href="https://www.youtube.com/@AnandityaZahra_xrpl" target="_blank">YouTube</a></p>
+      <a href="https://www.youtube.com/@ZahraNailul" target="_blank">YouTube</a>
+    </p>
     <p>&copy; 2026 Zahra Nailul Aisyah. Dibuat di Kelas Industri UBIG.</p>
   </footer>
 </body>
+
 </html>
