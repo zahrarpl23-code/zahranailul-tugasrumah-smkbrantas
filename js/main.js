@@ -32,27 +32,36 @@ if (daftarSkill) {
 }
 
 
-// Kontak: perbarui penghitung karakter pesan.
+// 2. Kontak: penghitung karakter pesan dan tombol kosongkan.
+// REVISI: tombolKosongkan sekarang dideklarasikan SEBELUM dipakai
+// (sebelumnya -> ReferenceError). Blok ganda di bawah file sudah dihapus.
+const tombolKosongkan = document.querySelector("#tombol-kosongkan");
 const kotakPesan = document.querySelector("#pesan");
 const hitungKarakter = document.querySelector("#hitung-karakter");
 
 if (kotakPesan && hitungKarakter) {
   const perbaruiHitungKarakter = () => {
-    hitungKarakter.textContent = `${kotakPesan.value.length}/300 karakter`;
+    const jumlah = kotakPesan.value.length;
+    hitungKarakter.textContent = `${jumlah}/300 karakter`;
+
+    // REVISI: toggle dipindah ke DALAM fungsi, jadi dicek tiap kali mengetik
+    hitungKarakter.classList.toggle("hampir-penuh", jumlah >= 250);
   };
 
   kotakPesan.addEventListener("input", perbaruiHitungKarakter);
   perbaruiHitungKarakter();
-  hitungKarakter.classList.toggle("hampir-penuh", kotakPesan.value.length >= 250);
- if (tombolKosongkan) {
-  tombolKosongkan.addEventListener("click", () => {
-    kotakPesan.value = "kosongkan-kotak-pesan";
-    perbaruiHitungKarakter();
-  });
- }
+
+  if (tombolKosongkan) {
+    tombolKosongkan.addEventListener("click", () => {
+      // REVISI: sebelumnya "kosongkan-kotak-pesan", seharusnya string kosong
+      kotakPesan.value = "";
+      perbaruiHitungKarakter();
+    });
+  }
 }
 
-// Proyek: data dan fungsi untuk menampilkan serta memfilter kartu proyek.
+
+// 3. Proyek: data dan fungsi untuk menampilkan serta memfilter kartu proyek.
 let proyek = [];
 
 const daftarProyek = document.querySelector("#daftar-proyek");
@@ -85,22 +94,22 @@ function tampilkanProyek(daftar) {
 }
 
 async function muatProyek() {
-    try {
-        daftarProyek.innerHTML = "Memuat proyek...";
+  try {
+    daftarProyek.innerHTML = "Memuat proyek...";
 
-        const response = await fetch("data/proyek.json");
+    const response = await fetch("data/proyek.json");
 
-        if (!response.ok) {
-            throw new Error("Gagal mengambil data proyek");
-        }
-
-        proyek = await response.json();
-
-        terapkanFilter();
-    } catch (error) {
-        daftarProyek.innerHTML = "Data proyek gagal dimuat.";
-        console.error(error);
+    if (!response.ok) {
+      throw new Error("Gagal mengambil data proyek");
     }
+
+    proyek = await response.json();
+
+    terapkanFilter();
+  } catch (error) {
+    daftarProyek.innerHTML = "Data proyek gagal dimuat.";
+    console.error(error);
+  }
 }
 
 function terapkanFilter() {
@@ -127,8 +136,9 @@ if (daftarProyek && jumlahProyek) {
 }
 
 
-
-// 5. Repositori GitHub terbaru (halaman Proyek)
+// 4. Repositori GitHub terbaru (halaman Proyek)
+// REVISI: username hanya dideklarasikan SATU kali (deklarasi ganda di akhir file dihapus).
+// Pastikan footer di semua halaman memakai akun yang sama.
 const username = "zahrarpl23-code";
 const alamatRepo = `https://api.github.com/users/${username}/repos`;
 const pilihan = "?sort=updated&per_page=6";
