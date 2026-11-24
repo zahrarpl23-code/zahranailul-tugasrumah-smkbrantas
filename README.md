@@ -23,14 +23,15 @@ terbaru dari GitHub API
 ## Teknologi
 
 - HTML5 dan CSS3 (Flexbox, *media query*, dan variabel CSS)
-- JavaScript (DOM, *event*, `fetch`, dan `async`/`await`)- JSON dan GitHub REST API
+- JavaScript (DOM, *event*, `fetch`, dan `async`/`await`)
+- JSON dan GitHub REST API
 - Git, GitHub, dan Vercel
 
 ## Skor Lighthouse (mobile)
 
-- Beranda: Performance 90, Accessibility 94, Best Practices 96, SEO 91
-- Proyek: Performance 72, Accessibility 96, Best Practices 96, SEO 91
-- Kontak: Performance 98, Accessibility 95, Best Practices 96, SEO 90
+- Beranda: Performance 95, Accessibility 100, Best Practices 96, SEO 91
+- Proyek: Performance 89, Accessibility 100, Best Practices 96, SEO 91
+- Kontak: Performance 99, Accessibility 100, Best Practices 96, SEO 90
 
 ## Tautan
 
