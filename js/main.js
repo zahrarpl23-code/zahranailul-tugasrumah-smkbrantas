@@ -71,7 +71,7 @@ let kategoriAktif = "semua";
 
 function buatKartuProyek(item) {
   const gambar = item.gambar
-    ? `<img src="${item.gambar}" alt="${item.alt}" width="280">`
+    ? `<img src="${item.gambar}" alt="${item.alt}" width="280" height="184">`
     : "";
 
   return `
